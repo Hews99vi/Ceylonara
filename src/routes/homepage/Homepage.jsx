@@ -1,7 +1,9 @@
-import './Homepage.css';
+import './homepage.css';
 
-const Homepage = () => {                        
-        return (
-                <div className="homepage">Homepage</div>
-        )
+const Homepage = () => {
+  return (
+    <div className="homepage">Homepage</div>
+  );
 }
+
+export default Homepage;
