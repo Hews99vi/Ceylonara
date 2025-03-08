@@ -7,9 +7,6 @@ import mongoose from "mongoose";
 import Chat from "./models/chat.js";
 import UserChats from "./models/userChats.js";
 import { ClerkExpressRequireAuth } from "@clerk/clerk-sdk-node";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -78,7 +75,7 @@ app.post("/api/chats", ClerkExpressRequireAuth(), async (req, res) => {
     } else {
       // IF EXISTS, PUSH THE CHAT TO THE EXISTING ARRAY
       await UserChats.updateOne(
-        {Id: userId },
+        { userId: userId },
         {
           $push: {
             chats: {
