@@ -22,7 +22,8 @@ hr {
 .List{
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: auto; /* Changed from scroll to auto */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 a {

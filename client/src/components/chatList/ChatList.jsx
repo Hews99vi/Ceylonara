@@ -38,8 +38,8 @@ const ChatList = () => {
       <div className="upgrade">
         <img src="/logo.png" alt="" />
         <div className="texts">
-          <span>Upgrade to Lama AI Pro</span>
-          <span>Get unlimited access to all features</span>
+          <span>Experience the Power of Tea AI</span>
+          <span>Analyze tea quality and detect diseases effortlessly with advanced image processing.</span>
         </div>
       </div>
     </div>

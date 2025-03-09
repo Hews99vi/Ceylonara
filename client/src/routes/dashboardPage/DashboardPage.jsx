@@ -37,7 +37,7 @@ const DashboardPage = () => {
       <div className="texts">
         <div className="logo">
           <img src="/logo.png" alt="" />
-          <h1>LAMA AI</h1>
+          <h1>Ceylonara</h1>
         </div>
         <div className="options">
           <div className="option">
@@ -50,13 +50,13 @@ const DashboardPage = () => {
           </div>
           <div className="option">
             <img src="/code.png" alt="" />
-            <span>Help me with my Code</span>
+            <span>Help me with Tea</span>
           </div>
         </div>
       </div>
       <div className="formContainer">
         <form onSubmit={handleSubmit}>
-          <input type="text" name="text" placeholder="Ask me anything..." />
+          <input type="text" name="text" placeholder="Ask me about tea..." />
           <button>
             <img src="/arrow.png" alt="" />
           </button>

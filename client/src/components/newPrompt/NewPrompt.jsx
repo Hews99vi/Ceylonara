@@ -70,10 +70,36 @@ const NewPrompt = ({ data }) => {
     },
   });
 
+  // Simple function to check if a question is likely tea-related
+  const checkIfTeaRelated = (text) => {
+    const teaKeywords = [
+      'tea', 'ceylon', 'brew', 'steep', 'infuse', 'leaves', 'cup', 
+      'black tea', 'green tea', 'white tea', 'oolong', 'chai', 'matcha',
+      'darjeeling', 'assam', 'earl grey', 'jasmine', 'herbal', 'teapot',
+      'teacup', 'caffeine', 'antioxidant', 'camellia sinensis', 'sri lanka',
+      'china tea', 'japanese tea', 'tea ceremony', 'tea estate', 'tea plantation'
+    ];
+    
+    const lowerText = text.toLowerCase();
+    return teaKeywords.some(keyword => lowerText.includes(keyword.toLowerCase()));
+  };
+
   const add = async (text, isInitial) => {
     if (!isInitial) setQuestion(text);
 
     try {
+      // Check if the question is tea-related
+      const isTeaRelated = checkIfTeaRelated(text);
+      
+      if (!isTeaRelated && !isInitial) {
+        // If not tea-related, provide a standard response
+        setAnswer("Ayubowan,🙏 I am Ceylonara, your gentle guide through the serene world of tea. With warmth and respect, I kindly remind you that my knowledge flows purely through the leaves of tea - its soothing culture, mindful preparation, diverse varieties, and rich history. Would you please share your tea-related curiosity with me? Let's explore this wonderful journey together! 🍵✨");
+        
+        // Still save the interaction to the database
+        mutation.mutate();
+        return;
+      }
+      
       const result = await chat.sendMessageStream(
         Object.entries(img.aiData).length ? [img.aiData, text] : [text]
       );
@@ -134,7 +160,7 @@ const NewPrompt = ({ data }) => {
       <form className="newForm" onSubmit={handleSubmit} ref={formRef}>
         <Upload setImg={setImg} />
         <input id="file" type="file" multiple={false} hidden />
-        <input type="text" name="text" placeholder="Ask anything..." />
+        <input type="text" name="text" placeholder="Ask anything about tea..." />
         <button>
           <img src="/arrow.png" alt="" />
         </button>
